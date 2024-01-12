@@ -1,0 +1,10 @@
+import '../notificationtwo_screen/widgets/todaylist_item_widget.dart';import 'package:flutter/material.dart';import 'package:goseedme/core/app_export.dart';import 'package:goseedme/widgets/app_bar/appbar_subtitle.dart';import 'package:goseedme/widgets/app_bar/appbar_title_image.dart';import 'package:goseedme/widgets/app_bar/custom_app_bar.dart';class NotificationtwoScreen extends StatelessWidget {const NotificationtwoScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(appBar: _buildAppBar(context), body: Container(width: double.maxFinite, padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 21.v), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Padding(padding: EdgeInsets.only(left: 3.h), child: Text("Today: ", textAlign: TextAlign.center, style: CustomTextStyles.titleMediumPrimary)), SizedBox(height: 26.v), _buildTodayList(context)])))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar(BuildContext context) { return CustomAppBar(centerTitle: true, title: Column(children: [Padding(padding: EdgeInsets.only(left: 23.h, right: 137.h), child: Row(children: [AppbarTitleImage(imagePath: ImageConstant.img4894890131Rig, margin: EdgeInsets.only(top: 7.v, bottom: 3.v), onTap: () {onTapRig(context);}), AppbarSubtitle(text: "Notification", margin: EdgeInsets.only(left: 88.h))])), SizedBox(height: 19.v), Align(alignment: Alignment.centerLeft, child: SizedBox(width: double.maxFinite, child: Divider(color: appTheme.gray40093)))]), styleType: Style.bgFill); } 
+/// Section Widget
+Widget _buildTodayList(BuildContext context) { return Expanded(child: Padding(padding: EdgeInsets.only(left: 6.h), child: ListView.separated(physics: BouncingScrollPhysics(), shrinkWrap: true, separatorBuilder: (context, index) {return SizedBox(height: 24.v);}, itemCount: 2, itemBuilder: (context, index) {return TodaylistItemWidget();}))); } 
+/// Navigates to the homeTabContainerScreen when the action is triggered.
+onTapRig(BuildContext context) { Navigator.pushNamed(context, AppRoutes.homeTabContainerScreen); } 
+ }

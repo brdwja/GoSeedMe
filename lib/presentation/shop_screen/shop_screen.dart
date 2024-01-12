@@ -1,0 +1,22 @@
+import 'package:flutter/material.dart';import 'package:goseedme/core/app_export.dart';import 'package:goseedme/widgets/app_bar/appbar_leading_image.dart';import 'package:goseedme/widgets/app_bar/appbar_subtitle.dart';import 'package:goseedme/widgets/app_bar/appbar_trailing_iconbutton.dart';import 'package:goseedme/widgets/app_bar/custom_app_bar.dart';import 'package:goseedme/widgets/custom_elevated_button.dart';import 'package:goseedme/presentation/cart_bottomsheet/cart_bottomsheet.dart';class ShopScreen extends StatelessWidget {const ShopScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(appBar: _buildAppBar(context), body: Container(width: double.maxFinite, padding: EdgeInsets.symmetric(horizontal: 23.h, vertical: 26.v), child: Column(children: [CustomImageView(imagePath: ImageConstant.imgBa830gp1, height: 183.v, width: 304.h), SizedBox(height: 16.v), Container(width: 304.h, margin: EdgeInsets.only(left: 8.h), child: Text("Introducing the \"PalmaZen Woodland Bracelet\" – a unique and captivating accessory that brings the essence of nature to your wrist. Crafted from exquisite palmwood, this bracelet captures the raw beauty and serene energy of the earth's tropical landscapes.", maxLines: 5, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center, style: CustomTextStyles.bodySmallPrimary10)), SizedBox(height: 22.v), _buildDescriptionRow(context), SizedBox(height: 10.v), _buildDescriptionRow1(context), SizedBox(height: 5.v)])), bottomNavigationBar: _buildAddToCartRow(context))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar(BuildContext context) { return CustomAppBar(leadingWidth: 49.h, leading: AppbarLeadingImage(imagePath: ImageConstant.img4894890131Rig, margin: EdgeInsets.only(left: 23.h, top: 22.v, bottom: 22.v), onTap: () {onTapRig(context);}), centerTitle: true, title: AppbarSubtitle(text: "PalmaZen Woodland Bracelet"), actions: [AppbarTrailingIconbutton(imagePath: ImageConstant.imgComponent13, margin: EdgeInsets.fromLTRB(16.h, 13.v, 25.h, 13.v), onTap: () {onTapIconButton(context);})]); } 
+/// Section Widget
+Widget _buildDescriptionRow(BuildContext context) { return Padding(padding: EdgeInsets.only(left: 14.h), child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Description", style: CustomTextStyles.labelMediumMedium10_1), Text("Composition", style: CustomTextStyles.labelMediumMedium10_1)])); } 
+/// Section Widget
+Widget _buildDescriptionRow1(BuildContext context) { return Padding(padding: EdgeInsets.only(left: 13.h), child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [SizedBox(width: 123.h, child: Text("Crafted from exquisite palmwood\nEarthy Tones\nEco-Friendly Statement\nVersatile Elegance", maxLines: 5, overflow: TextOverflow.ellipsis, style: CustomTextStyles.bodySmallPrimary10)), Container(width: 99.h, margin: EdgeInsets.only(left: 77.h, bottom: 32.v), child: Text("Sustainably Sourced  Palmwood Beads\nDurable Elastic Cord", maxLines: 3, overflow: TextOverflow.ellipsis, textAlign: TextAlign.right, style: CustomTextStyles.bodySmallPrimary10))])); } 
+/// Section Widget
+Widget _buildAddToCartRow(BuildContext context) { return Padding(padding: EdgeInsets.only(left: 31.h, right: 25.h, bottom: 36.v), child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, crossAxisAlignment: CrossAxisAlignment.start, children: [Padding(padding: EdgeInsets.only(bottom: 5.v), child: Text("10", style: CustomTextStyles.titleLargeRegular)), CustomElevatedButton(height: 36.v, width: 101.h, text: "Add to cart", margin: EdgeInsets.only(top: 2.v), buttonStyle: CustomButtonStyles.outlinePrimaryTL101, onPressed: () {onTapAddToCart(context);})])); } 
+/// Navigates to the shopOneTabContainerScreen when the action is triggered.
+onTapRig(BuildContext context) { Navigator.pushNamed(context, AppRoutes.shopOneTabContainerScreen); } 
+/// Navigates to the splashscreenScreen when the action is triggered.
+onTapIconButton(BuildContext context) { Navigator.pushNamed(context, AppRoutes.splashscreenScreen); } 
+
+/// Shows a modal bottom sheet with [CartBottomsheet] 
+/// widget content.
+/// The sheet is displayed on top of the current view with scrolling enabled if 
+/// content exceeds viewport height.
+onTapAddToCart(BuildContext context) { showModalBottomSheet(context: context, builder: (_)=>CartBottomsheet(),isScrollControlled: true); } 
+ }

@@ -1,0 +1,10 @@
+import 'package:flutter/material.dart';import 'package:goseedme/core/app_export.dart';import 'package:smooth_page_indicator/smooth_page_indicator.dart';class OnboardingscreentwoScreen extends StatelessWidget {const OnboardingscreentwoScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(body: Container(width: double.maxFinite, padding: EdgeInsets.only(left: 38.h, top: 124.v, right: 38.h), child: Column(children: [CustomImageView(imagePath: ImageConstant.imgUndrawProgressOverview2dik, height: 218.v, width: 284.h), SizedBox(height: 8.v), Text("Build  a community", style: theme.textTheme.headlineSmall), SizedBox(height: 5.v)])), bottomNavigationBar: _buildUserStack(context))); } 
+/// Section Widget
+Widget _buildUserStack(BuildContext context) { return Container(height: 24.v, width: 304.h, margin: EdgeInsets.only(left: 27.h, right: 27.h, bottom: 18.v), child: Stack(alignment: Alignment.center, children: [Align(alignment: Alignment.bottomCenter, child: Container(height: 11.v, margin: EdgeInsets.only(bottom: 4.v), child: AnimatedSmoothIndicator(activeIndex: 0, count: 3, effect: ScrollingDotsEffect(spacing: 6.17, activeDotColor: appTheme.blueGray700, dotColor: appTheme.blueGray50, activeDotScale: 1.1, dotHeight: 10.v, dotWidth: 10.h)))), Align(alignment: Alignment.center, child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [GestureDetector(onTap: () {onTapTxtSkip(context);}, child: Padding(padding: EdgeInsets.only(top: 1.v), child: Text("Skip", style: CustomTextStyles.bodyMediumIndigo50))), GestureDetector(onTap: () {onTapTxtNext(context);}, child: Text("Next", style: CustomTextStyles.bodyMediumBluegray60001))]))])); } 
+/// Navigates to the onboardingscreenthreeScreen when the action is triggered.
+onTapTxtSkip(BuildContext context) { Navigator.pushNamed(context, AppRoutes.onboardingscreenthreeScreen); } 
+/// Navigates to the onboardingscreenthreeScreen when the action is triggered.
+onTapTxtNext(BuildContext context) { Navigator.pushNamed(context, AppRoutes.onboardingscreenthreeScreen); } 
+ }

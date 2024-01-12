@@ -1,0 +1,27 @@
+import '../instagram_screen/widgets/doctorreviews_item_widget.dart';import '../instagram_screen/widgets/userprofile5_item_widget.dart';import 'package:flutter/material.dart';import 'package:goseedme/core/app_export.dart';import 'package:goseedme/presentation/feedback_one_page/feedback_one_page.dart';import 'package:goseedme/widgets/app_bar/appbar_leading_image.dart';import 'package:goseedme/widgets/app_bar/appbar_subtitle_one.dart';import 'package:goseedme/widgets/app_bar/appbar_title.dart';import 'package:goseedme/widgets/app_bar/custom_app_bar.dart';import 'package:goseedme/widgets/custom_bottom_bar.dart';
+// ignore_for_file: must_be_immutable
+class InstagramScreen extends StatelessWidget {InstagramScreen({Key? key}) : super(key: key);
+
+GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(appBar: _buildAppBar(context), body: SizedBox(width: SizeUtils.width, child: SingleChildScrollView(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [_buildClientTestimonials(context), SizedBox(height: 7.v), Padding(padding: EdgeInsets.only(left: 31.h), child: Text("Seedfund", style: CustomTextStyles.titleSmallGray80003)), SizedBox(height: 3.v), Container(width: 188.h, margin: EdgeInsets.only(left: 32.h), child: Text("Join Us in Nurturing Innovation! #SeedFundingCommunity", maxLines: 2, overflow: TextOverflow.ellipsis, style: CustomTextStyles.labelLargeGray80003)), SizedBox(height: 2.v), GestureDetector(onTap: () {onTapTxtWeburl(context);}, child: Padding(padding: EdgeInsets.only(left: 32.h), child: Text("www.seedfund.com", style: CustomTextStyles.labelLargeIndigo300))), SizedBox(height: 9.v), CustomImageView(imagePath: ImageConstant.imgImage48, height: 46.v, width: 330.h, alignment: Alignment.center), SizedBox(height: 10.v), _buildDoctorReviews(context), SizedBox(height: 53.v), _buildUserProfile(context)]))), bottomNavigationBar: _buildBottomBar(context))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar(BuildContext context) { return CustomAppBar(height: 37.v, leadingWidth: 29.h, leading: AppbarLeadingImage(imagePath: ImageConstant.imgVector, margin: EdgeInsets.only(left: 21.h, top: 14.v, bottom: 9.v)), centerTitle: true, title: AppbarSubtitleOne(text: "Seedfund"), actions: [AppbarTitle(text: "...", margin: EdgeInsets.symmetric(horizontal: 13.h, vertical: 5.v))]); } 
+/// Section Widget
+Widget _buildClientTestimonials(BuildContext context) { return Align(alignment: Alignment.center, child: Padding(padding: EdgeInsets.only(left: 17.h, right: 27.h), child: Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [Container(height: 96.adaptSize, width: 96.adaptSize, decoration: AppDecoration.outline1.copyWith(borderRadius: BorderRadiusStyle.circleBorder48), child: CustomImageView(imagePath: ImageConstant.imgContrastBlue600, height: 86.v, width: 96.h, alignment: Alignment.bottomCenter)), Spacer(), Padding(padding: EdgeInsets.only(top: 17.v, bottom: 35.v), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Padding(padding: EdgeInsets.only(left: 4.h), child: Text("20", style: CustomTextStyles.titleMediumPrimaryMedium)), Text("Posts", style: CustomTextStyles.labelLargeGray80003)])), Padding(padding: EdgeInsets.only(left: 21.h, top: 17.v, bottom: 35.v), child: _buildRecentOrders(context, dynamicText: "869K", dynamicText1: "Followers")), Padding(padding: EdgeInsets.only(left: 12.h, top: 17.v, bottom: 33.v), child: _buildRecentOrders(context, dynamicText: "5", dynamicText1: "Following"))]))); } 
+/// Section Widget
+Widget _buildDoctorReviews(BuildContext context) { return Align(alignment: Alignment.center, child: SizedBox(height: 72.v, child: ListView.separated(padding: EdgeInsets.symmetric(horizontal: 16.h), scrollDirection: Axis.horizontal, separatorBuilder: (context, index) {return SizedBox(width: 26.h);}, itemCount: 4, itemBuilder: (context, index) {return DoctorreviewsItemWidget();}))); } 
+/// Section Widget
+Widget _buildUserProfile(BuildContext context) { return GridView.builder(shrinkWrap: true, gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(mainAxisExtent: 121.v, crossAxisCount: 3, mainAxisSpacing: 2.h, crossAxisSpacing: 2.h), physics: NeverScrollableScrollPhysics(), itemCount: 6, itemBuilder: (context, index) {return Userprofile5ItemWidget();}); } 
+/// Section Widget
+Widget _buildBottomBar(BuildContext context) { return CustomBottomBar(onChanged: (BottomBarEnum type) {Navigator.pushNamed(navigatorKey.currentContext!, getCurrentRoute(type));}); } 
+/// Common widget
+Widget _buildRecentOrders(BuildContext context, {required String dynamicText, required String dynamicText1, }) { return Column(children: [Text(dynamicText, style: CustomTextStyles.titleMediumPrimaryMedium.copyWith(color: theme.colorScheme.primary.withOpacity(1))), Text(dynamicText1, style: CustomTextStyles.labelLargeGray80003.copyWith(color: appTheme.gray80003))]); } 
+///Handling route based on bottom click actions
+String getCurrentRoute(BottomBarEnum type) { switch (type) {case BottomBarEnum.Restore16: return AppRoutes.feedbackOnePage; default: return "/";} } 
+///Handling page based on route
+Widget getCurrentPage(String currentRoute) { switch (currentRoute) {case AppRoutes.feedbackOnePage: return FeedbackOnePage(); default: return DefaultWidget();} } 
+
+onTapTxtWeburl(BuildContext context) { // TODO: implement Actions
+ } 
+ }
